@@ -108,9 +108,9 @@ done
 
 # wp-config.php might be different among environments...
 log INFO "Configuring Wordpress using environment ${ENVIRONMENT} ..."
-sudorun "cp /var/www/html/config.${ENVIRONMENT}.php /var/www/html/config.php"
-sudorun "cp /var/www/html/htaccess.${ENVIRONMENT}.txt /var/www/html/.htaccess"
-sudorun "cp /var/www/html/robots.${ENVIRONMENT}.txt /var/www/html/robots.txt"
+sudorun "cp -f /var/www/html/config.${ENVIRONMENT}.php /var/www/html/config.php"
+sudorun "cp -f /var/www/html/htaccess.${ENVIRONMENT}.txt /var/www/html/.htaccess"
+sudorun "cp -f /var/www/html/robots.${ENVIRONMENT}.txt /var/www/html/robots.txt"
 
 chmod 444 config.php .htaccess robots.txt
 
