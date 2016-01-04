@@ -58,7 +58,6 @@ if [ -z "$DB_PASSWORD" ]; then
 	log ERROR '  Did you forget to -e DB_PASSWORD=... ?'
 	log ERROR
 	log ERROR '  (Also of interest might be DB_USER and DB_NAME.)'
-	exit 1
 fi
 
 # see http://stackoverflow.com/a/2705678/433558
