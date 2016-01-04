@@ -119,6 +119,7 @@ set_config 'DB_HOST' "$DB_HOST"
 set_config 'DB_USER' "$DB_USER"
 set_config 'DB_PASSWORD' "$DB_PASSWORD"
 set_config 'DB_NAME' "$DB_NAME"
+set_config 'DB_TABLE' "$DB_TABLE"
 set_config 'BASE_HREF' "$BASE_HREF"
 
 # Run original parameter (CMD in image / command in container)

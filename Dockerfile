@@ -17,6 +17,7 @@ ENV DB_HOST=
 ENV DB_USER=
 ENV DB_PASSWORD=
 ENV DB_NAME=
+ENV DB_TABLE=
 ENV BASE_HREF=
 
 # Required to install libapache2-mod-fastcgi
@@ -41,7 +42,7 @@ RUN apt-get install -y php-pear
 RUN apt-get install -y sudo
 
 # Install OPcache
-RUN docker-php-ext-install opcache
+RUN docker-php-ext-install opcache mysqli
 COPY opcache.ini /opcache.ini
 RUN cat /opcache.ini >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini
 
