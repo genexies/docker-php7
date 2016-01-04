@@ -58,7 +58,6 @@ if [ -z "$DB_PASSWORD" ]; then
 	log ERROR '  Did you forget to -e DB_PASSWORD=... ?'
 	log ERROR
 	log ERROR '  (Also of interest might be DB_USER and DB_NAME.)'
-	exit 1
 fi
 
 # see http://stackoverflow.com/a/2705678/433558
@@ -108,9 +107,9 @@ done
 
 # wp-config.php might be different among environments...
 log INFO "Configuring Wordpress using environment ${ENVIRONMENT} ..."
-sudorun "cp /var/www/html/config.${ENVIRONMENT}.php /var/www/html/config.php"
-sudorun "cp /var/www/html/htaccess.${ENVIRONMENT}.txt /var/www/html/.htaccess"
-sudorun "cp /var/www/html/robots.${ENVIRONMENT}.txt /var/www/html/robots.txt"
+sudorun "cp -f /var/www/html/config.${ENVIRONMENT}.php /var/www/html/config.php"
+sudorun "cp -f /var/www/html/htaccess.${ENVIRONMENT}.txt /var/www/html/.htaccess"
+sudorun "cp -f /var/www/html/robots.${ENVIRONMENT}.txt /var/www/html/robots.txt"
 
 chmod 444 config.php .htaccess robots.txt
 
@@ -119,6 +118,7 @@ set_config 'DB_HOST' "$DB_HOST"
 set_config 'DB_USER' "$DB_USER"
 set_config 'DB_PASSWORD' "$DB_PASSWORD"
 set_config 'DB_NAME' "$DB_NAME"
+set_config 'DB_TABLE' "$DB_TABLE"
 set_config 'BASE_HREF' "$BASE_HREF"
 
 # Run original parameter (CMD in image / command in container)
