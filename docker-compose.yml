@@ -1,0 +1,16 @@
+wordpress:
+  build: .
+#  image: genexies/wordpress:latest
+  volumes:
+    - /srv/gnx/fashionbip-wordpress/wp-content:/var/www/html/wp-content
+  ports:
+    - "80:80"
+  links:
+    - postfix
+  env_file: development.env
+
+postfix:
+  image: packagepeer/postfix:1
+  expose:
+    - "25"
+  env_file: development.env
